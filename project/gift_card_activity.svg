@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1200" viewBox="0 0 800 1200">
+  <title>Gift Card Purchase/Redemption Activity Diagram</title>
+  <style>
+    .activity-node {
+      fill: lightyellow;
+      stroke: black;
+      stroke-width: 1;
+    }
+    .decision-node {
+      fill: lightcoral;
+      stroke: black;
+      stroke-width: 1;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-anchor: middle;
+    }
+    .line {
+      stroke: black;
+      stroke-width: 1;
+      marker-end: url(#arrowhead);
+    }
+    .guard {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      fill: blue;
+    }
+    .swimlane {
+      fill: none;
+      stroke: black;
+      stroke-width: 1;
+      stroke-dasharray: 5,5;
+    }
+    .swimlane-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+
+  <!-- Swimlanes -->
+  <rect x="50" y="50" width="350" height="1100" class="swimlane" />
+  <text x="225" y="80" class="swimlane-text">Gift Card Purchase</text>
+  
+  <rect x="400" y="50" width="350" height="1100" class="swimlane" />
+  <text x="575" y="80" class="swimlane-text">Gift Card Redemption</text>
+
+  <!-- Purchase Flow -->
+  <!-- Start Node for Purchase -->
+  <circle cx="225" cy="120" r="20" fill="black"/>
+
+  <rect x="125" y="170" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="195" class="text">Navigate to Gift Card Purchase</text>
+  <line x1="225" y1="140" x2="225" y2="170" class="line"/>
+
+  <rect x="125" y="240" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="265" class="text">Fill Gift Card Form</text>
+  <line x1="225" y1="210" x2="225" y2="240" class="line"/>
+
+  <rect x="125" y="310" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="335" class="text">Set Amount, Recipient Info</text>
+  <line x1="225" y1="280" x2="225" y2="310" class="line"/>
+
+  <rect x="125" y="380" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="405" class="text">Preview Gift Card</text>
+  <line x1="225" y1="350" x2="225" y2="380" class="line"/>
+
+  <rect x="125" y="450" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="475" class="text">Submit Purchase</text>
+  <line x1="225" y1="420" x2="225" y2="450" class="line"/>
+
+  <polygon points="225,520 275,570 225,620 175,570" class="decision-node"/>
+  <text x="225" y="575" class="text">Payment Successful?</text>
+  <line x1="225" y1="490" x2="225" y2="520" class="line"/>
+
+  <line x1="175" y1="570" x2="125" y2="570" class="line"/>
+  <text x="150" y="560" class="guard">[No]</text>
+  <rect x="25" y="550" width="100" height="40" rx="10" class="activity-node"/>
+  <text x="75" y="575" class="text">Show Error</text>
+  <line x1="75" y1="550" x2="75" y2="265" class="line"/> <!-- Loop back to fill form -->
+  <line x1="75" y1="265" x2="125" y2="265" class="line"/>
+
+  <line x1="275" y1="570" x2="325" y2="570" class="line"/>
+  <text x="300" y="560" class="guard">[Yes]</text>
+
+  <rect x="125" y="650" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="675" class="text">Generate Gift Card Code</text>
+  <line x1="225" y1="620" x2="225" y2="650" class="line"/>
+
+  <rect x="125" y="720" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="745" class="text">Send Gift Card to Recipient</text>
+  <line x1="225" y1="690" x2="225" y2="720" class="line"/>
+
+  <rect x="125" y="790" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="225" y="815" class="text">Show Purchase Confirmation</text>
+  <line x1="225" y1="760" x2="225" y2="790" class="line"/>
+
+  <!-- End Node for Purchase -->
+  <circle cx="225" cy="860" r="20" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="225" cy="860" r="15" fill="black"/>
+  <line x1="225" y1="830" x2="225" y2="840" class="line"/>
+
+  <!-- Redemption Flow -->
+  <!-- Start Node for Redemption -->
+  <circle cx="575" cy="120" r="20" fill="black"/>
+
+  <rect x="475" y="170" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="575" y="195" class="text">Navigate to Gift Card Redeem</text>
+  <line x1="575" y1="140" x2="575" y2="170" class="line"/>
+
+  <rect x="475" y="240" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="575" y="265" class="text">Enter Gift Card Code</text>
+  <line x1="575" y1="210" x2="575" y2="240" class="line"/>
+
+  <rect x="475" y="310" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="575" y="335" class="text">Submit Redemption</text>
+  <line x1="575" y1="280" x2="575" y2="310" class="line"/>
+
+  <polygon points="575,380 625,430 575,480 525,430" class="decision-node"/>
+  <text x="575" y="435" class="text">Valid Code?</text>
+  <line x1="575" y1="350" x2="575" y2="380" class="line"/>
+
+  <line x1="525" y1="430" x2="475" y2="430" class="line"/>
+  <text x="500" y="420" class="guard">[No]</text>
+  <rect x="375" y="410" width="100" height="40" rx="10" class="activity-node"/>
+  <text x="425" y="435" class="text">Show Error</text>
+  <line x1="425" y1="410" x2="425" y2="265" class="line"/> <!-- Loop back to enter code -->
+  <line x1="425" y1="265" x2="475" y2="265" class="line"/>
+
+  <line x1="625" y1="430" x2="675" y2="430" class="line"/>
+  <text x="650" y="420" class="guard">[Yes]</text>
+
+  <polygon points="575,510 625,560 575,610 525,560" class="decision-node"/>
+  <text x="575" y="565" class="text">Already Redeemed?</text>
+  <line x1="575" y1="480" x2="575" y2="510" class="line"/>
+
+  <line x1="525" y1="560" x2="475" y2="560" class="line"/>
+  <text x="500" y="550" class="guard">[Yes]</text>
+  <rect x="375" y="540" width="100" height="40" rx="10" class="activity-node"/>
+  <text x="425" y="565" class="text">Show Error</text>
+  <line x1="425" y1="540" x2="425" y2="265" class="line"/> <!-- Loop back to enter code -->
+  <line x1="425" y1="265" x2="475" y2="265" class="line"/>
+
+  <line x1="625" y1="560" x2="675" y2="560" class="line"/>
+  <text x="650" y="550" class="guard">[No]</text>
+
+  <rect x="475" y="640" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="575" y="665" class="text">Mark Gift Card as Redeemed</text>
+  <line x1="575" y1="610" x2="575" y2="640" class="line"/>
+
+  <rect x="475" y="710" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="575" y="735" class="text">Add Balance to User Account</text>
+  <line x1="575" y1="680" x2="575" y2="710" class="line"/>
+
+  <rect x="475" y="780" width="200" height="40" rx="10" class="activity-node"/>
+  <text x="575" y="805" class="text">Show Redemption Success</text>
+  <line x1="575" y1="750" x2="575" y2="780" class="line"/>
+
+  <!-- End Node for Redemption -->
+  <circle cx="575" cy="860" r="20" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="575" cy="860" r="15" fill="black"/>
+  <line x1="575" y1="820" x2="575" y2="840" class="line"/>
+</svg>

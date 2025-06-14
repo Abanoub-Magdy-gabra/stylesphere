@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000">
+  <title>Gift Card Purchase/Redemption Sequence Diagram</title>
+  <style>
+    .lifeline {
+      stroke: black;
+      stroke-width: 1;
+      stroke-dasharray: 5,5;
+    }
+    .activation-box {
+      fill: lightblue;
+      stroke: black;
+      stroke-width: 1;
+    }
+    .message {
+      stroke: black;
+      stroke-width: 1;
+      marker-end: url(#arrowhead);
+    }
+    .return-message {
+      stroke: black;
+      stroke-width: 1;
+      stroke-dasharray: 5,5;
+      marker-end: url(#arrowhead);
+    }
+    .message-text {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      fill: black;
+    }
+    .participant-box {
+      fill: lightyellow;
+      stroke: black;
+      stroke-width: 1;
+    }
+    .participant-text {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-anchor: middle;
+      fill: black;
+    }
+    .note {
+      fill: #ffffcc;
+      stroke: black;
+      stroke-width: 1;
+    }
+    .note-text {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      fill: black;
+    }
+    .section-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      fill: #333333;
+    }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+
+  <!-- Section Title: Purchase -->
+  <text x="450" y="20" class="section-title" text-anchor="middle">Gift Card Purchase/Redemption Sequence</text>
+
+  <!-- Participants -->
+  <rect x="50" y="30" width="100" height="40" class="participant-box"/>
+  <text x="100" y="55" class="participant-text">User</text>
+  <line x1="100" y1="70" x2="100" y2="950" class="lifeline"/>
+
+  <rect x="200" y="30" width="100" height="40" class="participant-box"/>
+  <text x="250" y="55" class="participant-text">GiftCardPurchasePage</text>
+  <line x1="250" y1="70" x2="250" y2="950" class="lifeline"/>
+
+  <rect x="350" y="30" width="100" height="40" class="participant-box"/>
+  <text x="400" y="55" class="participant-text">GiftCardForm</text>
+  <line x1="400" y1="70" x2="400" y2="950" class="lifeline"/>
+
+  <rect x="500" y="30" width="100" height="40" class="participant-box"/>
+  <text x="550" y="55" class="participant-text">GiftCardPreview</text>
+  <line x1="550" y1="70" x2="550" y2="950" class="lifeline"/>
+
+  <rect x="650" y="30" width="100" height="40" class="participant-box"/>
+  <text x="700" y="55" class="participant-text">GiftCardRedeemPage</text>
+  <line x1="700" y1="70" x2="700" y2="950" class="lifeline"/>
+
+  <rect x="800" y="30" width="100" height="40" class="participant-box"/>
+  <text x="850" y="55" class="participant-text">Backend API</text>
+  <line x1="850" y1="70" x2="850" y2="950" class="lifeline"/>
+
+  <!-- PURCHASE FLOW -->
+  <text x="100" y="100" class="section-title" text-anchor="start">Purchase Flow:</text>
+
+  <!-- Navigate to Purchase Page -->
+  <line x1="100" y1="120" x2="250" y2="120" class="message"/>
+  <text x="175" y="110" class="message-text">1. Navigate to Gift Card Purchase</text>
+  <rect x="245" y="120" width="10" height="280" class="activation-box"/>
+
+  <!-- Fill Form -->
+  <line x1="255" y1="150" x2="400" y2="150" class="message"/>
+  <text x="330" y="140" class="message-text">2. Render Form</text>
+  <rect x="395" y="150" width="10" height="100" class="activation-box"/>
+
+  <!-- User Enters Gift Card Details -->
+  <line x1="100" y1="180" x2="400" y2="180" class="message"/>
+  <text x="250" y="170" class="message-text">3. Enter Gift Card Details</text>
+
+  <!-- Preview Gift Card -->
+  <line x1="405" y1="210" x2="550" y2="210" class="message"/>
+  <text x="480" y="200" class="message-text">4. Update Preview</text>
+  <rect x="545" y="210" width="10" height="40" class="activation-box"/>
+
+  <!-- Submit Form -->
+  <line x1="100" y1="280" x2="400" y2="280" class="message"/>
+  <text x="250" y="270" class="message-text">5. Submit Form</text>
+
+  <!-- Form Validation -->
+  <line x1="405" y1="310" x2="255" y2="310" class="message"/>
+  <text x="330" y="300" class="message-text">6. Submit Form Data</text>
+
+  <!-- Process Payment -->
+  <line x1="255" y1="340" x2="850" y2="340" class="message"/>
+  <text x="550" y="330" class="message-text">7. Process Payment</text>
+  <rect x="845" y="340" width="10" height="60" class="activation-box"/>
+
+  <rect x="860" y="350" width="120" height="40" class="note"/>
+  <text x="920" y="370" class="note-text" text-anchor="middle">In a real app, this would
+  process payment and
+  create gift card</text>
+
+  <!-- Payment Response -->
+  <line x1="850" y1="400" x2="255" y2="400" class="return-message"/>
+  <text x="550" y="390" class="message-text">8. Payment Confirmation</text>
+
+  <!-- Generate Gift Card -->
+  <line x1="255" y1="430" x2="850" y2="430" class="message"/>
+  <text x="550" y="420" class="message-text">9. Generate Gift Card Code</text>
+  <rect x="845" y="430" width="10" height="40" class="activation-box"/>
+
+  <!-- Return Gift Card -->
+  <line x1="850" y1="470" x2="255" y2="470" class="return-message"/>
+  <text x="550" y="460" class="message-text">10. Return Gift Card Data</text>
+
+  <!-- Show Success -->
+  <line x1="255" y1="500" x2="100" y2="500" class="message"/>
+  <text x="175" y="490" class="message-text">11. Show Purchase Success</text>
+
+  <!-- REDEMPTION FLOW -->
+  <text x="100" y="550" class="section-title" text-anchor="start">Redemption Flow:</text>
+
+  <!-- Navigate to Redeem Page -->
+  <line x1="100" y1="580" x2="700" y2="580" class="message"/>
+  <text x="400" y="570" class="message-text">12. Navigate to Gift Card Redeem</text>
+  <rect x="695" y="580" width="10" height="320" class="activation-box"/>
+
+  <!-- Enter Gift Card Code -->
+  <line x1="100" y1="610" x2="700" y2="610" class="message"/>
+  <text x="400" y="600" class="message-text">13. Enter Gift Card Code</text>
+
+  <!-- Submit Redemption -->
+  <line x1="100" y1="640" x2="700" y2="640" class="message"/>
+  <text x="400" y="630" class="message-text">14. Submit Redemption</text>
+
+  <!-- Validate Gift Card -->
+  <line x1="705" y1="670" x2="850" y2="670" class="message"/>
+  <text x="780" y="660" class="message-text">15. Validate Gift Card Code</text>
+  <rect x="845" y="670" width="10" height="60" class="activation-box"/>
+
+  <!-- Validation Response -->
+  <line x1="850" y1="730" x2="705" y2="730" class="return-message"/>
+  <text x="780" y="720" class="message-text">16. Validation Result</text>
+
+  <!-- Check if Already Redeemed -->
+  <line x1="705" y1="760" x2="850" y2="760" class="message"/>
+  <text x="780" y="750" class="message-text">17. Check if Already Redeemed</text>
+  <rect x="845" y="760" width="10" height="40" class="activation-box"/>
+
+  <!-- Redemption Check Response -->
+  <line x1="850" y1="800" x2="705" y2="800" class="return-message"/>
+  <text x="780" y="790" class="message-text">18. Redemption Status</text>
+
+  <!-- Mark as Redeemed -->
+  <line x1="705" y1="830" x2="850" y2="830" class="message"/>
+  <text x="780" y="820" class="message-text">19. Mark as Redeemed</text>
+  <rect x="845" y="830" width="10" height="40" class="activation-box"/>
+
+  <!-- Add Balance to Account -->
+  <line x1="850" y1="870" x2="705" y2="870" class="return-message"/>
+  <text x="780" y="860" class="message-text">20. Balance Added</text>
+
+  <!-- Show Redemption Success -->
+  <line x1="705" y1="900" x2="100" y2="900" class="message"/>
+  <text x="400" y="890" class="message-text">21. Show Redemption Success</text>
+</svg>
